@@ -1,0 +1,223 @@
+#include "nvlm_impl.h"
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cstdlib>
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
+namespace nvlm {
+
+    NVLMImpl::NVLMImpl() 
+        : env_(ORT_LOGGING_LEVEL_WARNING, "NVLM"),
+          memory_info_(Ort::MemoryInfo::CreateCpu(OrtArenaAllocator, OrtMemTypeDefault)) {
+        
+        // Initialize session options with optimizations
+        session_options_.SetIntraOpNumThreads(1);
+        session_options_.SetGraphOptimizationLevel(GraphOptimizationLevel::ORT_ENABLE_EXTENDED);
+        
+        std::cout << "[NVLM] Initialized with ONNX Runtime" << std::endl;
+    }
+
+    NVLMImpl::~NVLMImpl() {
+        session_.reset();
+        std::cout << "[NVLM] Cleanup completed" << std::endl;
+    }
+
+    bool NVLMImpl::LoadModel(const std::string& model_path, 
+                            ProcessingMode mode, 
+                            const std::string& model_name) {
+        
+        std::lock_guard<std::mutex> lock(session_mutex_);
+        
+        try {
+            std::cout << "[NVLM] Loading model: " << model_path << std::endl;
+            std::cout << "[NVLM] Model name: " << model_name << std::endl;
+            std::cout << "[NVLM] Processing mode: " << (mode == ProcessingMode::Visual ? "Visual" : "Textual") << std::endl;
+            
+            // Store model information
+            model_path_ = model_path;
+            model_name_ = model_name;
+            current_mode_ = mode;
+            
+            // Setup CUDA execution provider
+            if (!SetupCudaProvider()) {
+                SetError("Failed to setup CUDA provider");
+                return false;
+            }
+            
+            // Convert string path to wide string for Windows
+            #ifdef _WIN32
+                std::wstring wide_path(model_path.begin(), model_path.end());
+                
+                // Create session
+                session_ = std::make_unique<Ort::Session>(env_, wide_path.c_str(), session_options_);
+            #else
+                session_ = std::make_unique<Ort::Session>(env_, model_path.c_str(), session_options_);
+            #endif
+            
+            // Query model input/output information
+            QueryModelInfo();
+            
+            std::cout << "[NVLM] Model loaded successfully!" << std::endl;
+            return true;
+            
+        } catch (const Ort::Exception& e) {
+            SetError("ONNX Runtime error: " + std::string(e.what()));
+            session_.reset();
+            return false;
+        } catch (const std::exception& e) {
+            SetError("Standard error: " + std::string(e.what()));
+            session_.reset();
+            return false;
+        }
+    }
+
+    bool NVLMImpl::SetupCudaProvider() {
+        try {
+            std::cout << "[NVLM] Setting up CUDA execution provider..." << std::endl;
+            
+            // Static flag to prevent multiple CUDA provider registrations
+            static bool cuda_provider_added = false;
+            if (cuda_provider_added) {
+                std::cout << "[NVLM] CUDA provider already configured, skipping..." << std::endl;
+                return true;
+            }
+            
+            // CUDA Provider options
+            OrtCUDAProviderOptions cuda_options{};
+            cuda_options.device_id = 0;  // Use GPU 0
+            cuda_options.arena_extend_strategy = 0;  // kNextPowerOfTwo
+            cuda_options.gpu_mem_limit = 2ULL * 1024 * 1024 * 1024;  // 2GB limit
+            cuda_options.cudnn_conv_algo_search = OrtCudnnConvAlgoSearchExhaustive;
+            cuda_options.do_copy_in_default_stream = 1;
+            
+            // Add CUDA provider
+            session_options_.AppendExecutionProvider_CUDA(cuda_options);
+            cuda_provider_added = true;
+            
+            // Also add CPU provider as fallback
+            // Note: CPU provider is automatically added as the last provider
+            
+            std::cout << "[NVLM] CUDA provider configured successfully" << std::endl;
+            return true;
+            
+        } catch (const Ort::Exception& e) {
+            std::cout << "[NVLM] CUDA setup failed: " << e.what() << std::endl;
+            std::cout << "[NVLM] Falling back to CPU execution" << std::endl;
+            
+            // Clear any existing providers and use CPU only
+            session_options_ = Ort::SessionOptions{};
+            session_options_.SetIntraOpNumThreads(1);
+            session_options_.SetGraphOptimizationLevel(GraphOptimizationLevel::ORT_ENABLE_EXTENDED);
+            
+            return true;  // CPU fallback is still success
+        }
+    }
+
+    void NVLMImpl::QueryModelInfo() {
+        if (!session_) {
+            SetError("No session available for querying model info");
+            return;
+        }
+        
+        try {
+            Ort::AllocatorWithDefaultOptions allocator;
+            
+            // Clear previous information
+            input_names_.clear();
+            output_names_.clear();
+            input_shapes_.clear();
+            output_shapes_.clear();
+            
+            // Get input information
+            size_t num_inputs = session_->GetInputCount();
+            std::cout << "[NVLM] Model has " << num_inputs << " input(s)" << std::endl;
+            
+            for (size_t i = 0; i < num_inputs; i++) {
+                // Get input name
+                auto input_name = session_->GetInputNameAllocated(i, allocator);
+                input_names_.push_back(std::string(input_name.get()));
+                
+                // Get input type info
+                Ort::TypeInfo type_info = session_->GetInputTypeInfo(i);
+                auto tensor_info = type_info.GetTensorTypeAndShapeInfo();
+                
+                // Get input shape
+                std::vector<int64_t> input_shape = tensor_info.GetShape();
+                input_shapes_.push_back(input_shape);
+                
+                std::cout << "[NVLM] Input " << i << ": " << input_names_[i] << " - Shape: [";
+                for (size_t j = 0; j < input_shape.size(); j++) {
+                    std::cout << input_shape[j];
+                    if (j < input_shape.size() - 1) std::cout << ", ";
+                }
+                std::cout << "]" << std::endl;
+            }
+            
+            // Get output information
+            size_t num_outputs = session_->GetOutputCount();
+            std::cout << "[NVLM] Model has " << num_outputs << " output(s)" << std::endl;
+            
+            for (size_t i = 0; i < num_outputs; i++) {
+                // Get output name
+                auto output_name = session_->GetOutputNameAllocated(i, allocator);
+                output_names_.push_back(std::string(output_name.get()));
+                
+                // Get output type info
+                Ort::TypeInfo type_info = session_->GetOutputTypeInfo(i);
+                auto tensor_info = type_info.GetTensorTypeAndShapeInfo();
+                
+                // Get output shape
+                std::vector<int64_t> output_shape = tensor_info.GetShape();
+                output_shapes_.push_back(output_shape);
+                
+                std::cout << "[NVLM] Output " << i << ": " << output_names_[i] << " - Shape: [";
+                for (size_t j = 0; j < output_shape.size(); j++) {
+                    std::cout << output_shape[j];
+                    if (j < output_shape.size() - 1) std::cout << ", ";
+                }
+                std::cout << "]" << std::endl;
+            }
+            
+        } catch (const Ort::Exception& e) {
+            SetError("Error querying model info: " + std::string(e.what()));
+        }
+    }
+
+    void NVLMImpl::SetError(const std::string& error) {
+        last_error_ = error;
+        std::cerr << "[NVLM ERROR] " << error << std::endl;
+    }
+
+    // Placeholder implementations for other functions (we'll implement these next)
+    std::vector<float> NVLMImpl::PreprocessText(const std::string& text) {
+        SetError("PreprocessText not implemented yet");
+        return {};
+    }
+
+    std::vector<float> NVLMImpl::PreprocessImage(const std::vector<uint8_t>& image_data, 
+                                               int width, int height, int channels) {
+        SetError("PreprocessImage not implemented yet");
+        return {};
+    }
+
+    Embedding NVLMImpl::EncodeText(const std::string& text) {
+        SetError("EncodeText not implemented yet");
+        return Embedding(512);  // Placeholder dimension
+    }
+
+    Embedding NVLMImpl::EncodeImage(const std::vector<uint8_t>& image_data, 
+                                  int width, int height, int channels) {
+        SetError("EncodeImage not implemented yet");
+        return Embedding(512);  // Placeholder dimension
+    }
+
+    SimilarityResult NVLMImpl::ComputeSimilarity(const Embedding& text_emb, 
+                                               const Embedding& image_emb) {
+        SetError("ComputeSimilarity not implemented yet");
+        return {0.0f};
+    }
+}
+
