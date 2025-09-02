@@ -140,6 +140,8 @@ namespace nvlm {
     class NVLM {
     public:
         bool LoadModel(const std::string& model_path, ProcessingMode mode, const std::string& model_name);
+        std::vector<float> PreprocessText(const std::string& text);
+        std::vector<float> PreprocessImage(const std::vector<uint8_t>& image_data, int width, int height, int channels);
         Embedding EncodeText(const std::string& text);
         Embedding EncodeImage(const std::vector<uint8_t>& image_data, int width, int height, int channels);
         SimilarityResult ComputeSimilarity(const Embedding& text_emb, const Embedding& image_emb);
@@ -156,6 +158,7 @@ void DeleteNVLMInstance(void* instance);
 bool NVLM_LoadModel(void* instance, const char* model_path, int mode, const char* model_name);
 bool NVLM_IsModelLoaded(void* instance);
 const char* NVLM_GetLastError(void* instance);
+int NVLM_PreprocessImage(void* instance, const unsigned char* image_data, int width, int height, int channels, float* output_buffer, int buffer_size);
 ```
 
 ## Next Implementation Steps
