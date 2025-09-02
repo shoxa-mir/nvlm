@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6172FA44-3DE0-3394-BEC4-5CD6CC165C62}</ProjectGuid>
+    <ProjectGuid>{552D768B-1EE2-3364-868E-AD7E6817FB4D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -33,26 +33,25 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.8.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -60,25 +59,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\code\development\cmake_src\NVLM\install\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\code\development\cmake_src\vlm\NVLM\install\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nvlm.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nvlm</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\code\development\cmake_src\NVLM\install\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\code\development\cmake_src\vlm\NVLM\install\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nvlm.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nvlm</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\code\development\cmake_src\NVLM\install\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\code\development\cmake_src\vlm\NVLM\install\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">nvlm.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">nvlm</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\code\development\cmake_src\NVLM\install\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\code\development\cmake_src\vlm\NVLM\install\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">nvlm.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">nvlm</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
@@ -88,7 +87,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -108,10 +107,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;NVLM_EXPORTS;CMAKE_INTDIR=\"Debug\";nvlm_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -121,7 +120,7 @@
     <PostBuildEvent>
       <Message>Copying required dependency DLLs for nvlm.dll...</Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_cuda.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_shared.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_tensorrt.dll E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/bin/opencv_world4110.dll E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/bin/opencv_videoio_ffmpeg4110_64.dll E:/code/development/cmake_src/NVLM/install
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_cuda.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_shared.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_tensorrt.dll E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/bin/opencv_world4110.dll E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/bin/opencv_videoio_ffmpeg4110_64.dll E:/code/development/cmake_src/vlm/NVLM/install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -132,25 +131,21 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalDependencies>onnxruntime.lib;onnxruntime_providers_cuda.lib;onnxruntime_providers_shared.lib;onnxruntime_providers_tensorrt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64;E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/$(Configuration);E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/lib;E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64;E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/$(Configuration);E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/lib;E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>E:/code/development/cmake_src/NVLM/install/nvlm.lib</ImportLibrary>
-      <ProgramDataBaseFile>E:/code/development/cmake_src/NVLM/install/nvlm.pdb</ProgramDataBaseFile>
+      <ImportLibrary>E:/code/development/cmake_src/vlm/NVLM/install/nvlm.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/code/development/cmake_src/vlm/NVLM/install/nvlm.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
-    <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets </AdditionalOptions>
-      <PerformDeviceLink>false</PerformDeviceLink>
-    </CudaLink>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -171,10 +166,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NVLM_EXPORTS;CMAKE_INTDIR=\"Release\";nvlm_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -184,7 +179,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message>Copying required dependency DLLs for nvlm.dll...</Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_cuda.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_shared.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_tensorrt.dll E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/bin/opencv_world4110.dll E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/bin/opencv_videoio_ffmpeg4110_64.dll E:/code/development/cmake_src/NVLM/install
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_cuda.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_shared.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_tensorrt.dll E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/bin/opencv_world4110.dll E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/bin/opencv_videoio_ffmpeg4110_64.dll E:/code/development/cmake_src/vlm/NVLM/install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -195,25 +190,21 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalDependencies>onnxruntime.lib;onnxruntime_providers_cuda.lib;onnxruntime_providers_shared.lib;onnxruntime_providers_tensorrt.lib;opencv_world4110.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64;E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/$(Configuration);E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/lib;E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64;E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/$(Configuration);E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/lib;E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>E:/code/development/cmake_src/NVLM/install/nvlm.lib</ImportLibrary>
-      <ProgramDataBaseFile>E:/code/development/cmake_src/NVLM/install/nvlm.pdb</ProgramDataBaseFile>
+      <ImportLibrary>E:/code/development/cmake_src/vlm/NVLM/install/nvlm.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/code/development/cmake_src/vlm/NVLM/install/nvlm.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
-    <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets </AdditionalOptions>
-      <PerformDeviceLink>false</PerformDeviceLink>
-    </CudaLink>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -234,10 +225,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NVLM_EXPORTS;CMAKE_INTDIR=\"MinSizeRel\";nvlm_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -247,7 +238,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message>Copying required dependency DLLs for nvlm.dll...</Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_cuda.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_shared.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_tensorrt.dll E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/bin/opencv_world4110.dll E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/bin/opencv_videoio_ffmpeg4110_64.dll E:/code/development/cmake_src/NVLM/install
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_cuda.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_shared.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_tensorrt.dll E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/bin/opencv_world4110.dll E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/bin/opencv_videoio_ffmpeg4110_64.dll E:/code/development/cmake_src/vlm/NVLM/install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -258,25 +249,21 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalDependencies>onnxruntime.lib;onnxruntime_providers_cuda.lib;onnxruntime_providers_shared.lib;onnxruntime_providers_tensorrt.lib;opencv_world4110.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64;E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/$(Configuration);E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/lib;E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64;E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/$(Configuration);E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/lib;E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>E:/code/development/cmake_src/NVLM/install/nvlm.lib</ImportLibrary>
-      <ProgramDataBaseFile>E:/code/development/cmake_src/NVLM/install/nvlm.pdb</ProgramDataBaseFile>
+      <ImportLibrary>E:/code/development/cmake_src/vlm/NVLM/install/nvlm.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/code/development/cmake_src/vlm/NVLM/install/nvlm.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
-    <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets </AdditionalOptions>
-      <PerformDeviceLink>false</PerformDeviceLink>
-    </CudaLink>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -296,10 +283,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NVLM_EXPORTS;CMAKE_INTDIR=\"RelWithDebInfo\";nvlm_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\code\development\cmake_src\NVLM\src;E:\code\development\cmake_src\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\code\development\cmake_src\vlm\NVLM\src;E:\code\development\cmake_src\vlm\NVLM\third_party\onnxruntime-gpu-1.15.1\include;E:\code\development\cmake_src\vlm\NVLM\third_party\opencv-4.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -309,7 +296,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message>Copying required dependency DLLs for nvlm.dll...</Message>
       <Command>setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_cuda.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_shared.dll E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_tensorrt.dll E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/bin/opencv_world4110.dll E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/bin/opencv_videoio_ffmpeg4110_64.dll E:/code/development/cmake_src/NVLM/install
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_cuda.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_shared.dll E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/onnxruntime_providers_tensorrt.dll E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/bin/opencv_world4110.dll E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/bin/opencv_videoio_ffmpeg4110_64.dll E:/code/development/cmake_src/vlm/NVLM/install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -320,28 +307,24 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalDependencies>onnxruntime.lib;onnxruntime_providers_cuda.lib;onnxruntime_providers_shared.lib;onnxruntime_providers_tensorrt.lib;opencv_world4110.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64;E:/code/development/cmake_src/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/$(Configuration);E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/lib;E:/code/development/cmake_src/NVLM/third_party/opencv-4.11.0/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64;E:/code/development/cmake_src/vlm/NVLM/third_party/onnxruntime-gpu-1.15.1/lib/win-x64/$(Configuration);E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/lib;E:/code/development/cmake_src/vlm/NVLM/third_party/opencv-4.11.0/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>E:/code/development/cmake_src/NVLM/install/nvlm.lib</ImportLibrary>
-      <ProgramDataBaseFile>E:/code/development/cmake_src/NVLM/install/nvlm.pdb</ProgramDataBaseFile>
+      <ImportLibrary>E:/code/development/cmake_src/vlm/NVLM/install/nvlm.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/code/development/cmake_src/vlm/NVLM/install/nvlm.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
-    <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets </AdditionalOptions>
-      <PerformDeviceLink>false</PerformDeviceLink>
-    </CudaLink>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\code\development\cmake_src\NVLM\CMakeLists.txt">
+    <CustomBuild Include="E:\code\development\cmake_src\vlm\NVLM\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/code/development/cmake_src/NVLM/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/code/development/cmake_src/vlm/NVLM/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SE:/code/development/cmake_src/NVLM -BE:/code/development/cmake_src/NVLM/build --check-stamp-file E:/code/development/cmake_src/NVLM/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/code/development/cmake_src/vlm/NVLM -BE:/code/development/cmake_src/vlm/NVLM/build --check-stamp-file E:/code/development/cmake_src/vlm/NVLM/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -349,12 +332,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCUDAInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVIDIA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindCUDAToolkit.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeCUDACompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeCXXCompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeRCCompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\code\development\cmake_src\NVLM\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeCXXCompiler.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeRCCompiler.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/code/development/cmake_src/NVLM/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/code/development/cmake_src/vlm/NVLM/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SE:/code/development/cmake_src/NVLM -BE:/code/development/cmake_src/NVLM/build --check-stamp-file E:/code/development/cmake_src/NVLM/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/code/development/cmake_src/vlm/NVLM -BE:/code/development/cmake_src/vlm/NVLM/build --check-stamp-file E:/code/development/cmake_src/vlm/NVLM/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -362,12 +345,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCUDAInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVIDIA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindCUDAToolkit.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeCUDACompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeCXXCompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeRCCompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\code\development\cmake_src\NVLM\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeCXXCompiler.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeRCCompiler.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule E:/code/development/cmake_src/NVLM/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule E:/code/development/cmake_src/vlm/NVLM/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SE:/code/development/cmake_src/NVLM -BE:/code/development/cmake_src/NVLM/build --check-stamp-file E:/code/development/cmake_src/NVLM/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/code/development/cmake_src/vlm/NVLM -BE:/code/development/cmake_src/vlm/NVLM/build --check-stamp-file E:/code/development/cmake_src/vlm/NVLM/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -375,12 +358,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCUDAInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVIDIA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindCUDAToolkit.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeCUDACompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeCXXCompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeRCCompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\code\development\cmake_src\NVLM\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeCXXCompiler.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeRCCompiler.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/code/development/cmake_src/NVLM/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/code/development/cmake_src/vlm/NVLM/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SE:/code/development/cmake_src/NVLM -BE:/code/development/cmake_src/NVLM/build --check-stamp-file E:/code/development/cmake_src/NVLM/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/code/development/cmake_src/vlm/NVLM -BE:/code/development/cmake_src/vlm/NVLM/build --check-stamp-file E:/code/development/cmake_src/vlm/NVLM/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -388,19 +371,19 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCUDAInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\NVIDIA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindCUDAToolkit.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-NVIDIA-CUDA.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeCUDACompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeCXXCompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeRCCompiler.cmake;E:\code\development\cmake_src\NVLM\build\CMakeFiles\4.0.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\code\development\cmake_src\NVLM\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeCXXCompiler.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeRCCompiler.cmake;E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\4.0.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\code\development\cmake_src\vlm\NVLM\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="E:\code\development\cmake_src\NVLM\src\nvlm.cpp" />
-    <ClCompile Include="E:\code\development\cmake_src\NVLM\src\nvlm_impl.cpp" />
+    <ClCompile Include="E:\code\development\cmake_src\vlm\NVLM\src\nvlm.cpp" />
+    <ClCompile Include="E:\code\development\cmake_src\vlm\NVLM\src\nvlm_impl.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="E:\code\development\cmake_src\NVLM\build\ZERO_CHECK.vcxproj">
-      <Project>{E10D0480-3735-398F-A7FC-7E86C71FFC2B}</Project>
+    <ProjectReference Include="E:\code\development\cmake_src\vlm\NVLM\build\ZERO_CHECK.vcxproj">
+      <Project>{B133C4A8-7073-37D2-974B-2B486CD955AF}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -408,6 +391,5 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.8.targets" />
   </ImportGroup>
 </Project>

@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"E:/code/development/cmake_src/NVLM/build/cmake_install.cmake"
+		"E:/code/development/cmake_src/vlm/NVLM/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

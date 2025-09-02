@@ -1,6 +1,6 @@
-^E:\CODE\DEVELOPMENT\CMAKE_SRC\NVLM\BUILD\CMAKEFILES\942DE6181FCD3173F8CEEF7DDDF84996\GENERATE.STAMP.RULE
+^E:\CODE\DEVELOPMENT\CMAKE_SRC\VLM\NVLM\BUILD\CMAKEFILES\2070E45EBA952293866BD330BED7EE99\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SE:/code/development/cmake_src/NVLM -BE:/code/development/cmake_src/NVLM/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/code/development/cmake_src/NVLM/build/NVLM.sln
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/code/development/cmake_src/vlm/NVLM -BE:/code/development/cmake_src/vlm/NVLM/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/code/development/cmake_src/vlm/NVLM/build/NVLM.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

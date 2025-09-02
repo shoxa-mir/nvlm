@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>E:\code\development\cmake_src\NVLM\build\x64\Release\ZERO_CHECK</FullPath>
+      <FullPath>E:\code\development\cmake_src\vlm\NVLM\build\x64\Release\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\code\development\cmake_src\NVLM\install\nvlm.dll</FullPath>
+      <FullPath>E:\code\development\cmake_src\vlm\NVLM\install\nvlm.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

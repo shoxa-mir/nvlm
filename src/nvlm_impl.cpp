@@ -199,8 +199,73 @@ namespace nvlm {
 
     std::vector<float> NVLMImpl::PreprocessImage(const std::vector<uint8_t>& image_data, 
                                                int width, int height, int channels) {
-        SetError("PreprocessImage not implemented yet");
-        return {};
+        try {
+            // CLIP preprocessing constants
+            const int target_size = 224;
+            const std::vector<float> mean = {0.48145466f, 0.4578275f, 0.40821073f}; // RGB
+            const std::vector<float> std = {0.26862954f, 0.26130258f, 0.27577711f};  // RGB
+            
+            std::cout << "[NVLM] Preprocessing image: " << width << "x" << height 
+                      << " with " << channels << " channels" << std::endl;
+            
+            // Validate input
+            if (channels != 3) {
+                SetError("Image must have exactly 3 channels (RGB)");
+                return {};
+            }
+            
+            if (image_data.size() != static_cast<size_t>(width * height * channels)) {
+                SetError("Image data size doesn't match dimensions");
+                return {};
+            }
+            
+            // Create OpenCV Mat from input data (assuming BGR order from OpenCV)
+            cv::Mat img(height, width, CV_8UC3, const_cast<uint8_t*>(image_data.data()));
+            
+            // Convert BGR to RGB
+            cv::Mat rgb_img;
+            cv::cvtColor(img, rgb_img, cv::COLOR_BGR2RGB);
+            
+            // Resize to 224x224 (CLIP standard)
+            cv::Mat resized_img;
+            cv::resize(rgb_img, resized_img, cv::Size(target_size, target_size), 0, 0, cv::INTER_LINEAR);
+            
+            // Convert to float and normalize to [0, 1]
+            cv::Mat float_img;
+            resized_img.convertTo(float_img, CV_32F, 1.0 / 255.0);
+            
+            // Prepare output tensor in CHW format: [C, H, W]
+            std::vector<float> preprocessed_data(3 * target_size * target_size);
+            
+            // Apply normalization and convert to CHW format
+            for (int c = 0; c < 3; ++c) {
+                for (int h = 0; h < target_size; ++h) {
+                    for (int w = 0; w < target_size; ++w) {
+                        // Get pixel value from HWC format
+                        float pixel_value = float_img.at<cv::Vec3f>(h, w)[c];
+                        
+                        // Normalize with ImageNet statistics
+                        float normalized_value = (pixel_value - mean[c]) / std[c];
+                        
+                        // Store in CHW format
+                        int chw_index = c * target_size * target_size + h * target_size + w;
+                        preprocessed_data[chw_index] = normalized_value;
+                    }
+                }
+            }
+            
+            std::cout << "[NVLM] Image preprocessing completed: " << preprocessed_data.size() 
+                      << " float values" << std::endl;
+            
+            return preprocessed_data;
+            
+        } catch (const cv::Exception& e) {
+            SetError("OpenCV error during image preprocessing: " + std::string(e.what()));
+            return {};
+        } catch (const std::exception& e) {
+            SetError("Error during image preprocessing: " + std::string(e.what()));
+            return {};
+        }
     }
 
     Embedding NVLMImpl::EncodeText(const std::string& text) {

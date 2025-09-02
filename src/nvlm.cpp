@@ -113,4 +113,40 @@ extern "C" {
         }
         return g_last_error.c_str();
     }
+    
+    NVLM_API int NVLM_PreprocessImage(void* instance, const unsigned char* image_data, int width, int height, int channels, float* output_buffer, int buffer_size) {
+        if (!instance || !image_data || !output_buffer) {
+            g_last_error = "Invalid parameters for image preprocessing";
+            return 0;
+        }
+        
+        try {
+            auto* nvlm = static_cast<nvlm::NVLM*>(instance);
+            
+            // Convert C-style array to std::vector
+            std::vector<uint8_t> image_vector(image_data, image_data + (width * height * channels));
+            
+            // Call the preprocessing function
+            std::vector<float> result = nvlm->PreprocessImage(image_vector, width, height, channels);
+            
+            if (result.empty()) {
+                g_last_error = nvlm->GetLastError();
+                return 0;
+            }
+            
+            // Check buffer size
+            if (buffer_size < static_cast<int>(result.size())) {
+                g_last_error = "Output buffer too small. Required: " + std::to_string(result.size()) + ", provided: " + std::to_string(buffer_size);
+                return 0;
+            }
+            
+            // Copy result to output buffer
+            std::copy(result.begin(), result.end(), output_buffer);
+            return static_cast<int>(result.size());
+            
+        } catch (const std::exception& e) {
+            g_last_error = "Exception in NVLM_PreprocessImage: " + std::string(e.what());
+            return 0;
+        }
+    }
 }
