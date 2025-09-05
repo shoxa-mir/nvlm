@@ -275,8 +275,97 @@ namespace nvlm {
 
     Embedding NVLMImpl::EncodeImage(const std::vector<uint8_t>& image_data, 
                                   int width, int height, int channels) {
-        SetError("EncodeImage not implemented yet");
-        return Embedding(512);  // Placeholder dimension
+        try {
+            std::lock_guard<std::mutex> lock(session_mutex_);
+            
+            if (!session_) {
+                SetError("No model loaded for image encoding");
+                return Embedding(512);
+            }
+            
+            std::cout << "[NVLM] Encoding image: " << width << "x" << height 
+                      << " with " << channels << " channels" << std::endl;
+            
+            // Step 1: Preprocess the image
+            std::vector<float> preprocessed_data = PreprocessImage(image_data, width, height, channels);
+            if (preprocessed_data.empty()) {
+                SetError("Failed to preprocess image for encoding");
+                return Embedding(512);
+            }
+            
+            // Step 2: Create input tensor
+            const int64_t batch_size = 1;
+            const int64_t num_channels = 3;
+            const int64_t img_height = 224;
+            const int64_t img_width = 224;
+            
+            std::vector<int64_t> input_shape{batch_size, num_channels, img_height, img_width};
+            
+            // Create the input tensor
+            Ort::Value input_tensor = Ort::Value::CreateTensor<float>(
+                memory_info_, 
+                preprocessed_data.data(), 
+                preprocessed_data.size(), 
+                input_shape.data(), 
+                input_shape.size()
+            );
+            
+            // Prepare input and output names
+            std::vector<const char*> input_names_cstr;
+            std::vector<const char*> output_names_cstr;
+            
+            for (const auto& name : input_names_) {
+                input_names_cstr.push_back(name.c_str());
+            }
+            for (const auto& name : output_names_) {
+                output_names_cstr.push_back(name.c_str());
+            }
+            
+            // Step 3: Run inference
+            std::vector<Ort::Value> input_tensors;
+            input_tensors.push_back(std::move(input_tensor));
+            
+            std::cout << "[NVLM] Running image encoding inference..." << std::endl;
+            
+            auto output_tensors = session_->Run(
+                Ort::RunOptions{nullptr}, 
+                input_names_cstr.data(), 
+                input_tensors.data(), 
+                input_tensors.size(), 
+                output_names_cstr.data(), 
+                output_names_cstr.size()
+            );
+            
+            if (output_tensors.empty()) {
+                SetError("No output from image encoding model");
+                return Embedding(512);
+            }
+            
+            // Step 4: Extract embedding from output tensor
+            float* output_data = output_tensors[0].GetTensorMutableData<float>();
+            const auto& output_shape = output_tensors[0].GetTensorTypeAndShapeInfo().GetShape();
+            
+            // Calculate total number of elements in the output
+            size_t total_elements = 1;
+            for (int64_t dim : output_shape) {
+                total_elements *= dim;
+            }
+            
+            std::cout << "[NVLM] Image encoding completed. Embedding dimension: " << total_elements << std::endl;
+            
+            // Create embedding result
+            Embedding result(total_elements);
+            std::copy(output_data, output_data + total_elements, result.data.begin());
+            
+            return result;
+            
+        } catch (const Ort::Exception& e) {
+            SetError("ONNX Runtime error in image encoding: " + std::string(e.what()));
+            return Embedding(512);
+        } catch (const std::exception& e) {
+            SetError("Error in image encoding: " + std::string(e.what()));
+            return Embedding(512);
+        }
     }
 
     SimilarityResult NVLMImpl::ComputeSimilarity(const Embedding& text_emb, 

@@ -77,3 +77,14 @@ namespace nvlm {
         std::string GetLastError() const;
     };
 }
+
+// C-style wrapper functions for easier DLL interoperability
+extern "C" {
+    NVLM_API void* CreateNVLMInstance();
+    NVLM_API void DeleteNVLMInstance(void* instance);
+    NVLM_API bool NVLM_LoadModel(void* instance, const char* model_path, int mode, const char* model_name);
+    NVLM_API bool NVLM_IsModelLoaded(void* instance);
+    NVLM_API const char* NVLM_GetLastError(void* instance);
+    NVLM_API int NVLM_PreprocessImage(void* instance, const unsigned char* image_data, int width, int height, int channels, float* output_buffer, int buffer_size);
+    NVLM_API int NVLM_EncodeImage(void* instance, const unsigned char* image_data, int width, int height, int channels, float* output_buffer, int buffer_size);
+}
